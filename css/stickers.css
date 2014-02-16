@@ -1,0 +1,205 @@
+.memesgosd{
+    width: 120px;
+	height: 110px;
+	background: url('https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-ash3/851586_127344860783644_1223805928_n.png');
+	background-repeat: no-repeat;
+	margin-top: 6px;
+}
+.memesgosd.mini{
+	background-size: 230px;
+	width: 52px;
+	height: 50px;
+	display: inline-block
+}
+.memesgosd.c1-l1{
+	background-position: 0px 7px;
+}
+.memesgosd.c1-l1.mini{
+	background-position: 0px 2px;
+}
+.memesgosd.c2-l1{
+	background-position: -135px 7px;
+}
+.memesgosd.c2-l1.mini{
+	background-position: -60px 2px;
+}
+.memesgosd.c3-l1{
+	background-position: -270px 7px;
+}
+.memesgosd.c3-l1.mini{
+	background-position: -120px 2px;
+}
+.memesgosd.c4-l1{
+	background-position: -405px 7px;
+}
+.memesgosd.c4-l1.mini{
+	background-position: -180px 2px;
+}
+.memesgosd.c1-l2{
+	background-position: 0px -130px;
+}
+.memesgosd.c1-l2.mini{
+	background-position: 0px -60px;
+}
+.memesgosd.c2-l2{
+	background-position: -135px -130px;
+}
+.memesgosd.c2-l2.mini{
+	background-position: -60px -60px;
+}
+.memesgosd.c3-l2{
+	background-position: -270px -130px;
+}
+.memesgosd.c3-l2.mini{
+	background-position: -120px -60px;
+}
+.memesgosd.c4-l2{
+	background-position: -405px -130px;
+}
+.memesgosd.c4-l2.mini{
+	background-position: -180px -60px;
+}
+.memesgosd.c1-l3{
+	background-position: 0px -265px;
+}
+.memesgosd.c1-l3.mini{
+	background-position: 0px -120px;
+}
+.memesgosd.c2-l3{
+	background-position: -135px -265px;
+}
+.memesgosd.c2-l3.mini{
+	background-position: -60px -120px;
+}
+.memesgosd.c3-l3{
+	background-position: -270px -265px;
+}
+.memesgosd.c3-l3.mini{
+	background-position: -120px -120px;
+}
+.memesgosd.c4-l3{
+	background-position: -405px -265px;
+}
+.memesgosd.c4-l3.mini{
+	background-position: -180px -120px;
+}
+.memesgosd.c1-l4{
+	background-position: 0px -405px;
+}
+.memesgosd.c1-l4.mini{
+	background-position: 0px -180px;
+}
+.memesgosd.c2-l4{
+	background-position: -135px -405px;
+}
+.memesgosd.c2-l4.mini{
+	background-position: -60px -180px;
+}
+.memesgosd.c3-l4{
+	background-position: -270px -405px;
+}
+.memesgosd.c3-l4.mini{
+	background-position: -120px -180px;
+}
+.memesgosd.c4-l4{
+	background-position: -405px -405px;
+}
+.memesgosd.c4-l4.mini{
+	background-position: -180px -180px;
+}
+.memesgosd.c1-l5{
+	background-position: 0px -548px;
+}
+.memesgosd.c1-l5.mini{
+	background-position: 0px -240px;
+}
+.memesgosd.c2-l5{
+	background-position: -135px -548px;
+}
+.memesgosd.c2-l5.mini{
+	background-position: -60px -240px;
+}
+.memesgosd.c3-l5{
+	background-position: -270px -548px;
+}
+.memesgosd.c3-l5.mini{
+	background-position: -120px -240px;
+}
+.memesgosd.c4-l5{
+	background-position: -405px -548px;
+}
+.memesgosd.c4-l5.mini{
+	background-position: -180px -240px;
+}
+.memesgosd.c1-l6{
+	background-position: 0px -685px;
+}
+.memesgosd.c1-l6.mini{
+	background-position: 0px -300px;
+}
+.memesgosd.c2-l6{
+	background-position: -135px -685px;
+}
+.memesgosd.c2-l6.mini{
+	background-position: -60px -300px;
+}
+.memesgosd.c3-l6{
+	background-position: -270px -685px;
+}
+.memesgosd.c3-l6.mini{
+	background-position: -120px -300px;
+}
+.memesgosd.c4-l6{
+	background-position: -405px -685px;
+}
+.memesgosd.c4-l6.mini{
+	background-position: -180px -300px;
+}
+.memesgosd.c1-l7{
+	background-position: 0px -821px;
+}
+.memesgosd.c1-l7.mini{
+	background-position: 0px -360px;
+}
+.memesgosd.c2-l7{
+	background-position: -135px -821px;
+}
+.memesgosd.c2-l7.mini{
+	background-position: -60px -360px;
+}
+.memesgosd.c3-l7{
+	background-position: -270px -821px;
+}
+.memesgosd.c3-l7.mini{
+	background-position: -120px -360px;
+}
+.memesgosd.c4-l7{
+	background-position: -405px -821px;
+}
+.memesgosd.c4-l7.mini{
+	background-position: -180px -360px;
+}
+.memesgosd.c1-l8{
+	background-position: 0px -957px;
+}
+.memesgosd.c1-l8.mini{
+	background-position: 0px -420px;
+}
+.memesgosd.c2-l8{
+	background-position: -135px -957px;
+}
+.memesgosd.c2-l8.mini{
+	background-position: -60px -420px;
+}
+.memesgosd.c3-l8{
+	background-position: -270px -957px;
+}
+.memesgosd.c3-l8.mini{
+	background-position: -120px -420px;
+}
+.memesgosd.c4-l8{
+	background-position: -405px -957px;
+}
+.memesgosd.c4-l8.mini{
+	background-position: -180px -420px;
+}

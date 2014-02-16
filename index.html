@@ -1,0 +1,69 @@
+<html>
+<head>
+	<title>Home - M2S</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="Jaume Segarra">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="icon" type="image/png" href="http://m2s.es/app/icon-128.png" />
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="cleartype" content="on">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/home.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/lungo.icon.css">
+    <link rel="stylesheet" href="css/stickers.css">   
+    <script src="js/jquery.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/asterisc.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+</head>
+<body>
+  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+      <div class="navbar-header">
+          <a class="navbar-brand" href="#">M2S</a>
+        </div>
+        <div class="navbar-collapse">
+          <ul class="nav navbar-nav" id="menu">
+            <li class="active" id="home"><a href="#"><span class="icon user"></span><span class="text">Home</span></a></li>
+            <li><a href="#groups"><span class="icon group"></span><span class="text">Groups</span></a></li>
+            <li><a href="#states"><span class="icon pencil"></span><span class="text">States</span></a></li>
+            <li><a href="#settings"><span class="icon cog"></span><span class="text">Settings</span></a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li onclick="speop()" id="speop"><a href="#"><span class="icon plus"></span></a></li>
+            <li><a href="javascript:signout()"><span class="icon remove"></span></a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+  </div>
+  <div class="container" id="contents">
+    <ul class="people-bar" id="people-bar">
+     <div id="list-friends">
+      <input type="search" id="search-input" placeholder="Search" class="form-control im_dialogs_search_field ng-pristine ng-valid">
+     </div>
+     <div id="add-people" style="display:none">
+	  <input type="text" id="search-useradd" placeholder="Username of your friend" class="form-control im_dialogs_search_field ng-pristine ng-valid">
+	  <button onclick="submitadd()" class="btn btn-info" style="width:100%;margin-top:10px">Search</button>   
+	  <div class="people"></div>
+     </div>
+    </ul>
+    <div class="chat-messages"> 
+      <div class="center">
+        <div class="center-align">
+         <h3>No friend select</h3>
+         <p>Select one of your friends for chatting width his</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer><a href="#" onclick="speop()" id="text">Add friends</a></footer>
+  <div id="modsv"></div>
+  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/home.js"></script>
+</body>
+</html>
