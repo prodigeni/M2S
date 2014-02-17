@@ -4566,6 +4566,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 	  width: auto; 
       display: flex;
       display : -webkit-flex;
+      display : -moz-flex;
       position: relative; 
       left: 0; 
       top: 0; 
@@ -4686,6 +4687,9 @@ footer a:focus{
     white-space: nowrap;
     width: 100%;
     z-index: -10;
+}
+#contents{
+    padding-bottom:50px
 }
 }
 @media (min-width: 768px) {
@@ -5203,7 +5207,9 @@ footer a:focus{
   position: relative;
   top: -1px;
 }
-
+a:hover{
+  text-decoration: none
+}
 .label-default {
   background-color: #999999;
 }

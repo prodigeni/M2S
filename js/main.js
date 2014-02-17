@@ -64,18 +64,18 @@
                  if(type == 'message-group'){
                    msm = result.listnotify[i].msm;
                    namegroup = result.listnotify[i].namegroup;
-	               itemlist += 'said in the group'+namegroup+': '+msm;
+	               itemlist += ' said in the group '+namegroup+': '+msm;
 	               itemlist += '<a href="javascript:chatgr.html?id='+id+'"><button class="btn btn-lg btn-info">Read</button></a>';
                  }
                  if(type == 'addgroup-request'){
                    idgroup = result.listnotify[i].idgroup;
                    namegroup = result.listnotify[i].namegroup;
-	               itemlist += 'wants join to your group '+namegroup;  
+	               itemlist += ' wants join to your group '+namegroup;  
 	               itemlist += '<button onclick="acceptgrj('+idgroup+','+id+')" class="btn btn-lg btn-info">Accept</button>';
 	               itemlist += '<button onclick="blockgrj('+idgroup+','+id+')" class="btn btn-lg btn-danger">Block</button>';
                  }
                  itemlist += '</div></div>';
-                 $('#list-notifications').append(itemlistm);
+                 $('#list-notifications').append(itemlist);
                }
                $('.background-dark').click(function(){
 	               $('.background-dark').remove();
@@ -111,6 +111,7 @@
 		        var notifyb = '<div id="notify-mobile">You have notifications!</div>';
 		        $('.navbar-fixed-top').prepend(notifyb);
 		        $('#contents').css('padding-top','20px');
+		        $('#contents').css('height','100%');
 		        $('#notify-mobile').click(function(){
 			       litsnotify();
 		        })
