@@ -215,12 +215,20 @@ $(document).ready(function() {
 	            $('#speop').addClass("active");
 		    }
 	    }
+	    if($('footer').is(":visible")){
+	        $('footer').hide();
+	    } 
 	  } 
 	  if($(window).width() <= '500'){
 	        if(!$('.chat-messages').attr('style')){
 		       $('.li-chats').removeClass("active");
 		       $('.chat-messages').html('<div class="center"><div class="center-align"><h3>No friend select</h3><p>Select one of your friends for chatting width his</p></div></div>');
 	        }
+	      if(!$('#add-people').is(":visible")){
+	        if(!$('footer').is(":visible")){
+	           $('footer').show();
+	        } 
+	      }
 	  }
    })
    function urlchange(){

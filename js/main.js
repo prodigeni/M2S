@@ -37,7 +37,7 @@
              if(result.listnotify != null){
               function litsnotify(){
                var divno = document.createElement('div');
-               divno.innerHTML='<div id="list-notifications"></div>';
+               divno.innerHTML='<span class="icon remove" id="closenotifications"></span><div id="list-notifications"></div>';
                divno.className='background-dark';
                var modsv = document.getElementById('modsv');
                modsv.appendChild(divno);
@@ -77,7 +77,7 @@
                  itemlist += '</div></div>';
                  $('#list-notifications').append(itemlist);
                }
-               $('.background-dark').click(function(){
+               $('#closenotifications').click(function(){
 	               $('.background-dark').remove();
                })
               }

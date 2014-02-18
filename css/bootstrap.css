@@ -4562,6 +4562,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
   }
 }
 @media (max-width: 500px){
+  body{
+	  overflow-y:hidden
+  }
   #menu.nav.navbar-nav{
 	  width: auto; 
       display: flex;
@@ -4643,6 +4646,7 @@ footer a:focus{
 }
 #contents .chat-messages .center {
     height: 100%;
+    border-bottom: 1px solid #000000;
 }
 #contents .chat-messages .input-chat {
     bottom: 0;
@@ -4656,12 +4660,14 @@ footer a:focus{
 #contents .chat-messages .input-chat textarea{
 	display: inline-block;
 	margin-bottom: 10px;
-	padding-right: 70px;
+	padding-right: 65px;
 	height: 35px;
 	min-height: 35px;
-	max-height: 35px
+	max-height: 35px;
 }
 #contents .input-chat button {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
     position: absolute;
     right: 20px;
     bottom: 0px;
