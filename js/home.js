@@ -44,7 +44,7 @@ var input = document.getElementById('search-input');
           }
           }
        });
-function loadchat(id){
+function loadchat(id, type){
 	   $.ajax({
             type: "GET",
             crossDomain: true,
@@ -61,7 +61,7 @@ function loadchat(id){
 	           $('.chat-messages').css('display','block');
 	           $('.nav.navbar-nav li').css('display','none');
 	           username = $('.li-chats.active .name').html();
-	           $('#menu.nav.navbar-nav').append('<div id="forw"><span class="icon chevron-left"></span><div class="center">Chat with '+username+'</div></div>');
+	           $('#menu.nav.navbar-nav').append('<div id="forw"><span class="icon chevron-left"></span><div class="center">Chat with '+username+'</div><span class="icon plus" data-toggle="modal" data-target="#more-share"></span></div>');
 	           $('#forw .icon.chevron-left').click(function(){
 		          $('.li-chats').removeClass("active");
 		          $('.chat-messages').css('display','none');
@@ -83,8 +83,11 @@ function loadchat(id){
               stick = data.messages[i].stick;
               tableid = data.messages[i].tableid;
               datosmem = crearmsmd(id,username,iduser,imgr,textmsm,locat,leido,fecha,me,stick,tableid);
-              $('.'+'chat-messages .center').prepend(datosmem);
-            } 
+              $('.'+'chat-messages .center').append(datosmem);
+            }
+            if(type == 'pr'){
+	          $('.center').scrollTop(10000000000000000000000);
+            }
            }
          });
 function crearmsmd(id,username,iduser,imgr,textmsm,locat,leido,fecha,me,stick,tableid){
@@ -150,6 +153,7 @@ function crearmsmd(id,username,iduser,imgr,textmsm,locat,leido,fecha,me,stick,ta
       }
      if($('#'+id).length){}else{
        return msm;
+       $('.center').scrollTop(10000000000000000000000);
      }
 	   }
    }
@@ -160,38 +164,46 @@ function crearmsmd(id,username,iduser,imgr,textmsm,locat,leido,fecha,me,stick,ta
 	   if($('.input-chat').length){
 		   $('.input-chat').remove();
 	   }
-	   loadchat(id);
-       $('.'+'chat-messages').append('<div class="input-chat"><textarea class="form-control" rows="2" name="txt"></textarea> <button class="btn btn-info" onclick="sendmsm('+id+')">Send</button></div>');
+	   loadchat(id,'pr');
+       $('.'+'chat-messages').append('<div class="input-chat"><textarea class="form-control" rows="2" name="txt"></textarea> <button class="btn btn-info" id="more-chat" data-toggle="modal" data-target="#more-share">+</button> <button class="btn btn-info" id="send-button" onclick="sendmsm('+id+')">Send</button></div>');
+       $('.center').scrollTop($(document).height());
        }
+   function poststick(text){
+       $('#more-share').modal('hide');
+	   sendchat(text,'');
+   }
    function sendmsm(id){
-       var txtvalue = document.getElementsByName('txt')[0].value;
-       var mapv = '';
+	   var txtvalue = document.getElementsByName('txt')[0].value;
+	   var mapv = '';
+	   sendchat(txtvalue,mapv);
+   }
+   function sendchat(text,map){
+       if($('.li-chats.active').length != '0'){
+       id = $('.li-chats.active').attr("id").split('-');
+       id = id[1];
 	   $.ajax({
         type: "GET",
         crossDomain: true,
         url: "http://m2s.es/app/api/connect/chat.php",
-        data: "txt="+txtvalue+"&map="+mapv+"&id="+id,
+        data: "txt="+text+"&map="+map+"&id="+id,
         cache:false,
         dataType: 'jsonp',
         beforeSend: function() {
           console.log('Connecting...');
-          var sending = '<div id="sending-mod"><span>Sending...</span></div>';
-          $('.input-chat').append(sending);
-          $('.input-chat button').attr("disabled","disabled");
+          $('.input-chat #send-button').attr("disabled","disabled");
         },
         complete: function() {
          console.log('Completed');
-         $('#sending-mod').remove();
-         $('.input-chat button').removeAttr("disabled");
+         $('.input-chat #send-button').removeAttr("disabled");
          document.getElementsByName('txt')[0].value = '';
-         id = $('.li-chats.active').attr("id").split('-');
-         id = id[1];
-	     loadchat(id); 
+	     loadchat(id,'pr'); 
+	     $('.center').scrollTop(10000000000000000000000);
        },
        success: function(result) {
          console.log(result.mensaje);
        }  
      })
+     }
    };
 $(document).ready(function() {
       if($('.li-chats .active').length != '0'){
@@ -218,8 +230,15 @@ $(document).ready(function() {
 	    if($('footer').is(":visible")){
 	        $('footer').hide();
 	    } 
+	    if($('#spaces').length != '0'){
+		    $('#spaces').remove();
+	    }
 	  } 
 	  if($(window).width() <= '500'){
+	        var spaces = "<div id='spaces' style='height:60px;width:100%'></div>";
+	        if($('#spaces').length == '0'){
+	           $('#people-bar').append(spaces);
+	        }
 	        if(!$('.chat-messages').attr('style')){
 		       $('.li-chats').removeClass("active");
 		       $('.chat-messages').html('<div class="center"><div class="center-align"><h3>No friend select</h3><p>Select one of your friends for chatting width his</p></div></div>');
@@ -230,7 +249,11 @@ $(document).ready(function() {
 	        } 
 	      }
 	  }
-   })
+   });
+   if($(window).width() <= '500'){
+	    var spaces = "<div id='spaces' style='height:60px;width:100%'></div>";
+	    $('#people-bar').append(spaces);
+   }
    function urlchange(){
    var urlas = urlast();
    if(urlas != undefined){

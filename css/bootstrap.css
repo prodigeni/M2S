@@ -4665,7 +4665,7 @@ footer a:focus{
 	min-height: 35px;
 	max-height: 35px;
 }
-#contents .input-chat button {
+#contents .input-chat #send-button {
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
     position: absolute;
@@ -4683,6 +4683,13 @@ footer a:focus{
     font-size: 24px;
     margin-left: 15px;
 }
+#forw .icon.plus {
+    color: #FFFFFF;
+    cursor: pointer;
+    position: fixed;
+    right: 15px;
+    font-size: 24px;
+}
 #forw .center {
     color: #FFFFFF;
     overflow: hidden;
@@ -4693,6 +4700,9 @@ footer a:focus{
     white-space: nowrap;
     width: 100%;
     z-index: -10;
+}
+#more-chat{
+	display: none
 }
 #contents{
     padding-bottom:50px
