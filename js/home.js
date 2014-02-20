@@ -86,7 +86,7 @@ function loadchat(id, type){
               $('.'+'chat-messages .center').append(datosmem);
             }
             if(type == 'pr'){
-	          $('.center').scrollTop(10000000000000000000000);
+	          $('.center').scrollTop($(document).height());
             }
            }
          });
@@ -153,7 +153,7 @@ function crearmsmd(id,username,iduser,imgr,textmsm,locat,leido,fecha,me,stick,ta
       }
      if($('#'+id).length){}else{
        return msm;
-       $('.center').scrollTop(10000000000000000000000);
+       $('.center').scrollTop($(document).height());
      }
 	   }
    }
@@ -166,7 +166,6 @@ function crearmsmd(id,username,iduser,imgr,textmsm,locat,leido,fecha,me,stick,ta
 	   }
 	   loadchat(id,'pr');
        $('.'+'chat-messages').append('<div class="input-chat"><textarea class="form-control" rows="2" name="txt"></textarea> <button class="btn btn-info" id="more-chat" data-toggle="modal" data-target="#more-share">+</button> <button class="btn btn-info" id="send-button" onclick="sendmsm('+id+')">Send</button></div>');
-       $('.center').scrollTop($(document).height());
        }
    function poststick(text){
        $('#more-share').modal('hide');
@@ -174,7 +173,11 @@ function crearmsmd(id,username,iduser,imgr,textmsm,locat,leido,fecha,me,stick,ta
    }
    function sendmsm(id){
 	   var txtvalue = document.getElementsByName('txt')[0].value;
-	   var mapv = '';
+	   if(document.getElementsByName('map')[0]){
+	     var mapv = document.getElementsByName('map')[0].value;
+       }else{
+	     var mapv = "";
+       }
 	   sendchat(txtvalue,mapv);
    }
    function sendchat(text,map){
@@ -197,7 +200,6 @@ function crearmsmd(id,username,iduser,imgr,textmsm,locat,leido,fecha,me,stick,ta
          $('.input-chat #send-button').removeAttr("disabled");
          document.getElementsByName('txt')[0].value = '';
 	     loadchat(id,'pr'); 
-	     $('.center').scrollTop(10000000000000000000000);
        },
        success: function(result) {
          console.log(result.mensaje);
@@ -242,6 +244,13 @@ $(document).ready(function() {
 	        if(!$('.chat-messages').attr('style')){
 		       $('.li-chats').removeClass("active");
 		       $('.chat-messages').html('<div class="center"><div class="center-align"><h3>No friend select</h3><p>Select one of your friends for chatting width his</p></div></div>');
+		       if($('#map-html').lenght != '0'){
+		        $('#btn-location').html('Share location');
+	            $('#btn-location').removeClass('btn-danger');
+                $('#btn-location').addClass('btn-info'); 
+                $('#map-html').remove();
+               }
+               $('#more-share').modal('hide');
 	        }
 	      if(!$('#add-people').is(":visible")){
 	        if(!$('footer').is(":visible")){
@@ -383,5 +392,99 @@ $(document).ready(function() {
 	          },5000);
             }
           }   
-     })         
+     })  
    }
+   $('#file-input').change(function(e) {
+        var file = e.target.files[0],
+            imageType = /image.*/;
+        
+        if (!file.type.match(imageType))
+            return;
+        
+        var reader = new FileReader();
+        reader.onload = fileOnload;
+        reader.readAsDataURL(file);
+        
+     });
+    var MAX_HEIGHT = 100;
+    function fileOnload(e) {
+        var $img = $('<img>', { src: e.target.result });
+        var canvas = $('#canvas')[0];
+        $('#file-input').val('');
+        $img.load(function() {
+            if(this.height > MAX_HEIGHT) {
+			 this.width *= MAX_HEIGHT / this.height;
+			 this.height = MAX_HEIGHT;
+		    }
+		    var context = canvas.getContext('2d');
+		    context.clearRect(0, 0, canvas.width, canvas.height);
+		    canvas.width = this.width;
+		    canvas.height = this.height;
+            context.drawImage(this, 0, 0, this.width, this.height);
+        });
+        $('#more-share').modal('hide');
+        $('#img-mod').modal('show');
+    }
+    $('#upload-image').click(function(){
+     if($('.li-chats.active').length != '0'){
+        $('#upload-image').attr('disabled','disabled');
+        var canvas = document.getElementById("canvas");
+        var url = canvas.toDataURL();
+        url = url.replace('data:image/png;base64,', '');
+        console.log(url);
+        $.ajax({
+          url: 'https://api.imgur.com/3/image',
+          method: 'POST',
+          headers: {
+            Authorization: 'Client-ID def4c03828b22c2',
+            Accept: 'application/json'
+          },
+          data: {
+            image: url,
+            type: 'base64'
+          },
+          success: function(result) {
+          var link = result.data.link;
+          sendchat(link,'');
+          $('#upload-image').removeAttr("disabled");
+          $('#img-mod').modal('hide');
+          }
+        });
+        }
+    });
+    function mostrar_mapa(position) {
+       if($('.input-chat').length != '0'){
+           var latitud = position.coords.latitude;
+           var longitud = position.coords.longitude;
+           var latlong = latitud+' '+longitud;
+           $('.input-chat').append(
+           $(document.createElement("input")).attr("value", latlong).attr('name','map').attr('type','hidden').attr('class','map')
+           );
+           var mapht = '<iframe marginheight="0" marginwidth="0" src="http://maps.google.com/maps?client=safari&ll='+latitud+','+longitud+'&z=14&output=embed" frameborder="0" scrolling="no" style="height: 24%;margin-top: 10px;max-height: 200px;max-width: 700px;width: 100%;" id="map-html"></iframe>';
+           $('#location').append(mapht);
+           $('#btn-location').removeAttr("disabled");
+           $('#btn-location').html('Remove Location');
+           $('#btn-location').removeClass('btn-info');
+           $('#btn-location').addClass('btn-danger');
+        }
+         }
+    $('#btn-location').click(function(){
+       if($('.input-chat').length != '0'){
+       if($('#btn-location.btn-info').length != '0'){
+         if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(mostrar_mapa);
+         }else{
+            alert("Your browser doesn't the location API");  
+         }
+         $('#btn-location').attr('disabled','disabled');
+         $('#btn-location').html('Getting your location...');
+        }else{
+	     $('#btn-location').html('Share location');
+	     $('#btn-location').removeClass('btn-danger');
+         $('#btn-location').addClass('btn-info'); 
+         $('#map-html').remove();
+         $('input.map').remove();
+        }
+        }
+        });
+   

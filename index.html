@@ -110,9 +110,28 @@
 	         <a href="javascript:poststick('memesgosd c3-l8')"><div class="memesgosd c3-l8 mini"></div></a>
 	         <a href="javascript:poststick('memesgosd c4-l8')"><div class="memesgosd c4-l8 mini"></div></a>
           </div>
-          <div class="tab-pane" id="images">Coming...</div>
-          <div class="tab-pane" id="location">Coming...</div>
+          <div class="tab-pane" id="images"><input type="file" id="file-input"></div>
+          <div class="tab-pane" id="location"><button class="btn btn-info" id="btn-location" style="width:100%;">Share Location</button>  </div>
          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="img-mod" tabindex="-1" role="dialog" aria-labelledby="img-mod" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Share Image</h4>
+      </div>
+      <div class="modal-body">
+        <center>
+        <canvas id="canvas"></canvas>
+        </center>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="upload-image">Upload Image</button>
       </div>
     </div>
   </div>
