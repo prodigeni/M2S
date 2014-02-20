@@ -5,6 +5,14 @@ Coming you can create your app based in M2S with our api.
 To learn how it works the api and more enter here:
 http://jaumesegarra.github.io/M2S-API/ or test online in http://jaumesegarra.github.io/M2S
 
+New in 0.3.5.1
+===
+ - You can share images to your friends
+ - You can share your location
+ - Fixed bug in notifications
+ - Now you can delete Messages sliding it to the left
+ - Fixed bug in stickers
+ 
 New in 0.3
 ===
  - Messages from top to bottom
