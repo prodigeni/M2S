@@ -97,6 +97,7 @@ function crearmsmd(id,username,iduser,imgr,textmsm,locat,leido,fecha,me,stick,ta
            }else{
              msm = '<div class="sms me" id="'+id+'">';
            }
+         msm+= '<a href="javascript:deletemessage('+id+')" class="trash" style="text-decoration:none;color:#777777;float:right;display:none;line-height: 50px;width: 50px;font-size:26px;text-align:center"><span class="icon trash"></span></a>';
          msm+= '<img src="'+imgr+'" class="imgp" style="right:0px;"/>';
          if(stick == '1'){
              msm+= '<blockquote style="position:relative;top:-15px">';
@@ -104,6 +105,7 @@ function crearmsmd(id,username,iduser,imgr,textmsm,locat,leido,fecha,me,stick,ta
              msm+= '<blockquote>'
          }
          if(stick == '1'){
+            var textmsm = textmsm.substring(0, textmsm.length-17);
             msm+= '<div class="'+textmsm+'"></div>';  
          }else{
             msm+= '<p>'+linkscom(textmsm)+'</p>';
@@ -118,7 +120,6 @@ function crearmsmd(id,username,iduser,imgr,textmsm,locat,leido,fecha,me,stick,ta
            msm+='<span class="tick">✓</span>';
          }
          msm+= fecha+' ';
-         msm+= '<a href="deletec.php?id='+id+'&chati='+tableid+'" style="text-decoration:none;color:#777777;">Delete</div>';
          msm+='</div></div></blockquote>'
       }else{
         if(stick == '1'){
@@ -151,6 +152,28 @@ function crearmsmd(id,username,iduser,imgr,textmsm,locat,leido,fecha,me,stick,ta
         msm+= fecha;
         msm+='</div></div></blockquote>'
       }
+      if(me == '1'){
+	     $$('#'+id).swipeLeft(function() {
+           $('#'+id+' .trash').css('display','block');
+           if(stick == '1'){
+	         $('#'+id+' blockquote').css('left','-245px');
+           }else{
+             $('#'+id+' blockquote').css('margin-right','140px'); 
+           }
+           $('#'+id+' img').css('position','relative'); 
+           $('#'+id+' img').css('right','20px'); 
+           console.log('swipe!');
+         });
+         $$('#'+id).swipeRight(function() {
+           $('#'+id+' .trash').css('display','none');  
+           if(stick == '1'){
+	         $('#'+id+' blockquote').css('left','-180px');  
+           }else{
+             $('#'+id+' blockquote').removeAttr('style'); 
+           }
+           $('#'+id+' img').removeAttr('style'); 
+         });
+       }
      if($('#'+id).length){}else{
        return msm;
        $('.center').scrollTop($(document).height());
@@ -167,6 +190,22 @@ function crearmsmd(id,username,iduser,imgr,textmsm,locat,leido,fecha,me,stick,ta
 	   loadchat(id,'pr');
        $('.'+'chat-messages').append('<div class="input-chat"><textarea class="form-control" rows="2" name="txt"></textarea> <button class="btn btn-info" id="more-chat" data-toggle="modal" data-target="#more-share">+</button> <button class="btn btn-info" id="send-button" onclick="sendmsm('+id+')">Send</button></div>');
        }
+   function deletemessage(id){
+	   id = id.toString();
+	   $.ajax({
+            type: "GET",
+            crossDomain: true,
+            url: "http://m2s.es/app/api/connect/delete-message.php?id="+id,
+            cache:false,
+            dataType: 'jsonp',
+            success: function(data) {
+               if(data.mensaje == 'ok'){
+                  console.log('Message deleted succesfully');
+	              $('#'+id).remove();  
+               }
+            }
+      });
+   }
    function poststick(text){
        $('#more-share').modal('hide');
 	   sendchat(text,'');

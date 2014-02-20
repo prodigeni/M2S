@@ -98,13 +98,16 @@
                   noti.onclose = {
                   }
                   setTimeout( function() { noti.close() }, 10000)
+                }else{
+                 if(navigator.mozNotification){
+	               var notification = navigator.mozNotification;
+                   var n = notification.createNotification("You have new notifications!", "Looks like you are popular in M2S!","http://m2s.es/app/img/icon-114.png");
+                   n.onclick = function() {
+	                 litsnotify();
+                   }
+                   n.show(); 
+                 }
                 }
-	            var notification = navigator.mozNotification;
-                var n = notification.createNotification("You have new notifications!", "Looks like you are popular in M2S!","http://m2s.es/app/img/icon-114.png");
-                n.onclick = function() {
-	             litsnotify();
-                }
-                n.show(); 
             }
             if(result.notification != '0'){
 		        $('.navbar-fixed-top').css('height','70px');
