@@ -37,7 +37,11 @@ var input = document.getElementById('search-input');
                  divs +='<span class="icon chevron-right"></span></div><div class="right-p"><div><span class="name">'; 
                  divs +=username; 
                  divs +='</span><span class="state">'; 
-                 divs +=state; 
+                 if(state == null){
+	                divs += '--';   
+                 }else{
+                    divs +=state;
+                 } 
                  divs +='</span></div></div></li>';
              };
              $('#people-bar #list-friends').append(divs);
@@ -113,7 +117,7 @@ function crearmsmd(id,username,iduser,imgr,textmsm,locat,leido,fecha,me,stick,ta
          if(locat.latitude != null){
            longitud = locat.longitud;
            longitud = longitud.substring(0, longitud.length-2);
-           msm+= '<iframe marginheight="0" marginwidth="0" src="http://maps.google.com/maps?client=safari&ll='+locat.latitude+','+longitud+'&z=14&output=embed" frameborder="0" scrolling="no" style="height: 24%;margin-left: -20px;max-height: 200px;max-width: 700px;width: 100%;"></iframe>';     
+           msm+= '<iframe marginheight="0" marginwidth="0" src="http://maps.google.com/maps?client=safari&ll='+locat.latitude+','+longitud+'&z=14&output=embed" frameborder="0" scrolling="no" style="height: 24%;max-height: 200px;max-width: 700px;width: 100%;"></iframe>';     
          }
          msm+='<div class="foot">';
          if(leido != 'NO'){
@@ -134,7 +138,6 @@ function crearmsmd(id,username,iduser,imgr,textmsm,locat,leido,fecha,me,stick,ta
         }else{
          msm+= '<blockquote>'
         }
-        msm+='<span class="user">'+username+':</span>';
         if(stick == '1'){
          msm+= '<div class="'+textmsm+'"></div>';  
         }else{
@@ -143,7 +146,7 @@ function crearmsmd(id,username,iduser,imgr,textmsm,locat,leido,fecha,me,stick,ta
         if(locat.latitude != null){
          longitud = locat.longitud;
          longitud = longitud.substring(0, longitud.length-2);
-         msm+= '<iframe marginheight="0" marginwidth="0" src="http://maps.google.com/maps?client=safari&ll='+locat.latitude+','+longitud+'&z=14&output=embed" frameborder="0" scrolling="no" style="height: 24%;margin-left: -20px;max-height: 200px;max-width: 700px;width: 100%;"></iframe>';   
+         msm+= '<iframe marginheight="0" marginwidth="0" src="http://maps.google.com/maps?client=safari&ll='+locat.latitude+','+longitud+'&z=14&output=embed" frameborder="0" scrolling="no" style="height: 24%;max-height: 200px;max-width: 700px;width: 100%;"></iframe>';   
         }
         msm+='<div class="foot">';
         if(leido== 'NO'){

@@ -59,7 +59,7 @@
                    msm = result.listnotify[i].msm;
 	               itemlist += 'said you: '+msm;
                    var url = 'index.html#chat-'+id;
-	               itemlist += '<a href="'+url+'"><button class="btn btn-lg btn-info">Read</button></a>';
+	               itemlist += '<a href="'+url+'" id="close-click"><button class="btn btn-lg btn-info">Read</button></a>';
                  };
                  if(type == 'message-group'){
                    msm = result.listnotify[i].msm;
@@ -78,6 +78,9 @@
                  $('#list-notifications').append(itemlist);
                }
                $('#closenotifications').click(function(){
+	               $('.background-dark').remove();
+               })
+               $('#close-click').click(function(){
 	               $('.background-dark').remove();
                })
               }
