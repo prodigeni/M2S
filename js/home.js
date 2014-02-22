@@ -104,7 +104,7 @@ function crearmsmd(id,username,iduser,imgr,textmsm,locat,leido,fecha,me,stick,ta
          msm+= '<a href="javascript:deletemessage('+id+')" class="trash" style="text-decoration:none;color:#777777;float:right;display:none;line-height: 50px;width: 50px;font-size:26px;text-align:center"><span class="icon trash"></span></a>';
          msm+= '<img src="'+imgr+'" class="imgp" style="right:0px;"/>';
          if(stick == '1'){
-             msm+= '<blockquote style="position:relative;top:-15px">';
+             msm+= '<blockquote style="position:relative;top:-15px;margin-bottom: -7px;">';
          }else{
              msm+= '<blockquote>'
          }
@@ -134,7 +134,7 @@ function crearmsmd(id,username,iduser,imgr,textmsm,locat,leido,fecha,me,stick,ta
         msm+='<a href="#" onclick="usermod('+iduser+')">';
         msm+= '<img src="'+imgr+'" class="imgp"/></a>';
         if(stick == '1'){
-         msm+= '<blockquote style="position:relative;top:-15px">';
+         msm+= '<blockquote style="position:relative;top:-15px;margin-bottom: -7px;">';
         }else{
          msm+= '<blockquote>'
         }

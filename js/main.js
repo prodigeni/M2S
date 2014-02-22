@@ -57,7 +57,7 @@
                  };
                  if(type == 'message'){
                    msm = result.listnotify[i].msm;
-	               itemlist += 'said you: '+msm;
+	               itemlist += ' said you: '+msm;
                    var url = 'index.html#chat-'+id;
 	               itemlist += '<a href="'+url+'" id="close-click"><button class="btn btn-lg btn-info">Read</button></a>';
                  };
