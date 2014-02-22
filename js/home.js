@@ -67,7 +67,7 @@ function loadchat(id, type){
 		          $('.chat-messages').css('display','none');
 		          $('.nav.navbar-nav li').css('display','inline-block');
 		          $('#forw').remove();
-		          $('.chat-messages').html('<div class="center"><div class="center-align"><h3>No friend select</h3><p>Select one of your friends for chatting width his</p></div></div>');
+		          $('.chat-messages').html('<div class="foot-space"><div class="center"><div class="center-align"><h3>No friend select</h3><p>Select one of your friends for chatting width his</p></div></div></div>');
 	           });
             }
             for(var i = 0; i < data.messages.length; i++){
@@ -282,7 +282,7 @@ $(document).ready(function() {
 	        }
 	        if(!$('.chat-messages').attr('style')){
 		       $('.li-chats').removeClass("active");
-		       $('.chat-messages').html('<div class="center"><div class="center-align"><h3>No friend select</h3><p>Select one of your friends for chatting width his</p></div></div>');
+		       $('.chat-messages').html('<div class="foot-space"><div class="center"><div class="center-align"><h3>No friend select</h3><p>Select one of your friends for chatting width his</p></div></div></div>');
 		       if($('#map-html').lenght != '0'){
 		        $('#btn-location').html('Share location');
 	            $('#btn-location').removeClass('btn-danger');
@@ -328,7 +328,7 @@ $(document).ready(function() {
 	   $('#home').removeClass("active");
 	   $('#speop').addClass("active");
 	   $('.li-chats').removeClass("active");
-	   $('.chat-messages').html('<div class="center"><div class="center-align"><h3>No friend select</h3><p>Select one of your friends for chatting width his</p></div></div>');
+	   $('.chat-messages').html('<div class="foot-space"><div class="center"><div class="center-align"><h3>No friend select</h3><p>Select one of your friends for chatting width his</p></div></div></div>');
 	   $('#home').click(function(){
 		 $('#list-friends').show(); 
 	     $('#add-people').hide(); 
