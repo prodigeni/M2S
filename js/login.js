@@ -49,7 +49,7 @@ function login(usern,pass,type){
             if(result.mensaje == 'e2'){
               var Android;
               if(Android===undefined){
-	           new Messi('Data not entered', {title: 'Error', titleClass: 'anim error', buttons: [{id: 0, label: 'Close', val: 'X'}]});
+               errormod('Data not entered');
               }else{
               Android.showDialog('Data not entered');
               }
@@ -63,18 +63,20 @@ function login(usern,pass,type){
              if(type == 'login'){
              var Android;
               if(Android===undefined){
-	            new Messi('Data not corrected', {title: 'Error', titleClass: 'anim error', buttons: [{id: 0, label: 'Close', val: 'X'}]});
+	            errormod('The username or password are incorrect.');
               }else{
-              Android.showDialog('Data not corrected');
+              Android.showDialog('The username or password are incorrect.');
               }
               $('#formsd').css('display','block');
               $('#sending-load').remove();
+              $('input[name="user"]').val('');
+              $('input[name="pass"]').val('');
               }else{
 	              localStorage.removeItem('user');
 	              localStorage.removeItem('passwd');
 	              window.location.href="login.html"
               }
-              console.log('Data not corrected');
+              console.log('The username or password are incorrect.');
             }
           }   
      })
